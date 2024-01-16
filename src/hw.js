@@ -3,11 +3,14 @@ let displayTemp = document.querySelector("#tempValue");
 let temp = Math.round(response.data.temperature.current);
 displayTemp.innerHTML=`${temp}°C`;
 
+let iconElement=document.querySelector("#icon");
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
 let descriptionElement = document.querySelector("#description");
 descriptionElement.innerHTML = response.data.condition.description;
 
 let humidityElement = document.querySelector("#humidity");
-humidityElement.innerHTML= `${response.data.temperature.humidity}% `
+humidityElement.innerHTML= `${response.data.temperature.humidity}% `;
 
 let windSpeedElement = document.querySelector("#windSpeed");
 windSpeedElement.innerHTML= `${response.data.wind.speed} km/h`;
