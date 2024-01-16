@@ -1,3 +1,25 @@
+function displaySearch (response) {
+let displayTemp = document.querySelector("#tempValue");
+let temp = Math.round(response.data.temperature.current);
+displayTemp.innerHTML=`${temp}°C`;
+
+let descriptionElement = document.querySelector("#description");
+descriptionElement.innerHTML = response.data.condition.description;
+
+let humidityElement = document.querySelector("#humidity");
+humidityElement.innerHTML= `${response.data.temperature.humidity}% `
+
+let windSpeedElement = document.querySelector("#windSpeed");
+windSpeedElement.innerHTML= `${response.data.wind.speed} km/h`;
+
+
+console.log(response);
+}
+let searchForm = document.querySelector("#city-form");
+searchForm.addEventListener("submit", search);
+
+
+
 function search (event) {
     event.preventDefault ();
     let cityInputElement = document.querySelector("#enterCity");
@@ -10,16 +32,6 @@ let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api
 axios.get(apiURL).then(displaySearch)
 
 }
-
-function displaySearch (response) {
-let displayTemp = document.querySelector("#tempValue");
-let temp = Math.round(response.data.temperature.current);
-displayTemp.innerHTML=`${temp}°C`;
-}
-
-
-let searchForm = document.querySelector("#city-form");
-searchForm.addEventListener("submit", search);
 
 
 
